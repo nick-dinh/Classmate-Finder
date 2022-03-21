@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: darkblue;
+    justify-content: space-evenly;
+    color: white
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
