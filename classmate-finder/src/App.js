@@ -1,25 +1,34 @@
-import './App.css';
-import Header from './components/Header';
-import Profile from './components/user/Profile';
-import Chat from './components/communication/Chat';
+import {React, useState} from 'react'
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import './App.css'
+import CreateRoom from './pages/CreateRoom';
+import GetRooms from './pages/GetRooms';
+import Room from './pages/Room'
 
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-function App() {
+const App = () => {
+  let [usr, setUsr] = useState("")
   return (
-    <div className="App">
-      
+    <div>
+      <p>----------------------------------------Debug----------------------------------------</p>
+      <a href="/createroom">create new dm</a><br></br>
+      <label><b>Username: </b></label>
+      <input type="text" onChange = { (e) => {
+        setUsr(e.target.value)
+      }}/>
+      <button onClick = { () => {
+        window.location.href = `/rooms/${usr}`
+      }}>Switch Account</button>
+      <p>---------------------------------------------------------------------------------------</p>
+
+
       <Router>
-      <Header/>
-       <Routes>
-         <Route path="/chat" element={<Chat/>}></Route>
-         <Route path="/profile" element={<Profile/>}></Route>
-       </Routes>
-     </Router>
-   
+        <Route path="/rooms/:userName" exact render={(props) => <GetRooms />} />
+        <Route path="/createroom" render={(props)=> <CreateRoom />} />
+        <Route path="/room/:roomId" render={(props)=> <Room />}/>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
