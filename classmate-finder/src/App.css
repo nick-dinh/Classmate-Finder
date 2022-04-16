@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+#textbox
+{
+    height:100px;
+    width:38em;
+    font-size:10pt;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
