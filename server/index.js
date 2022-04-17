@@ -20,6 +20,16 @@ app.get("/api/getChats", (req, res) => {
     });   
 });
 
+// express route to get chatroom name
+app.get('/api/getTitle/:chatID', (req, res) => {
+    const id = req.params.chatID;
+    db.query("SELECT users FROM chatrooms where chatid = ?", [id], (err, result) => {
+        if(err)
+            console.log(err);
+        else res.send(result)
+    });   
+});
+
 // express route to get every message (DEBUG ONLY)
 app.get("/api/getMsgs", (req, res) => {
     // ex query: select * from chatrooms (get all messages in db)
@@ -63,6 +73,19 @@ app.post('/api/createRoom', (req, res) => {
             console.log(err);
         else console.log(result)
         res.send("created!")
+    });   
+});
+
+// express route to update room
+app.post('/api/updateRoom/', (req, res) => {
+    const id = req.body.chatID;
+    const user = req.body.userName;
+    // UPDATE table_name SET ... WHERE ...
+    db.query("UPDATE chatrooms SET users = ? WHERE chatid = ?", [user, id], (err, result) => {
+        if(err)
+            console.log(err);
+        else console.log(result)
+        res.send("updated room!")
     });   
 });
 
@@ -113,7 +136,7 @@ app.post('/api/createPost', (req, res) => {
     const body = req.body.body;
     const time = req.body.time;
     // ex query: insert into post (title,author,location,body,timecreated,scheduledtime) values (...)
-    db.query("INSERT INTO post (title,author,location,body,timecreated,scheduledtime) VALUES (?,?,?,?,CURRENT_TIME(),?)", [title, author, location, body, time], (err, result) => {
+db.query("INSERT INTO post (title,author,location,body,timecreated,scheduledtime) VALUES (?,?,?,?,CURRENT_TIME(),STR_TO_DATE(?, \"%m-%d-%Y %H:%i:%s\"))", [title, author, location, body, time], (err, result) => {
         if(err)
             console.log(err);
         else console.log(result)
@@ -124,6 +147,12 @@ app.post('/api/createPost', (req, res) => {
 // express route to delete post
 app.post('/api/deletePost/', (req, res) => {
     const id = req.body.id;
+    // need to first delete all comments or there will be an error
+    db.query("DELETE FROM comments WHERE post_id = ?", id, (err, result) => {
+        if (err)
+            console.log(err);
+        else console.log(result)
+    });
     // DELETE FROM table_name WHERE ...
     db.query("DELETE FROM post WHERE postid = ?", id, (err, result) => {
         if (err)
