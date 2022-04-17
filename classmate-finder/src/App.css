@@ -12,12 +12,12 @@
 }
 
 .link {
-  color: blue;
+  color: lightcoral;
   cursor:pointer;
 }
 
 .link:hover {
-  color: darkblue;
+  color: darkorange;
 }
 
 .App-link {
@@ -37,12 +37,136 @@
   font-size:10pt;
 }
 
+.nd {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.invis {
+  display: none;
+}
+
+p:hover + .invis {
+  margin-top:-10px;
+  display:block;
+  position:relative;
+  color: red;
+}
+
+.button {
+  background-color: DarkSlateGray;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 4px 0px;
+  margin-right:4px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  background-color: SlateGrey; /* Green */
+}
+
+.buttongr {
+  background-color: seagreen;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 4px 0px;
+  margin-right:4px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.buttongr:hover {
+  background-color: lightgreen;
+}
+
+.buttonsm {
+  background-color: seagreen;
+  border: none;
+  color: white;
+  padding: 2.4px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 4px -10px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.buttonsm:hover {
+  background-color: lightgreen;
+}
+
+.buttonlg {
+  background-color: seagreen;
+  border: none;
+  color: white;
+  padding: 45px 20px;
+  text-align: center;
+  position:absolute;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 4px -14px;
+  margin-top:0px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.buttonlg:hover {
+  background-color: lightgreen;
+}
+
+.buttonrd {
+  background-color: indianred; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 4px 0px;
+  margin-right:4px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.buttonrd:hover {
+  background-color: red; /* Green */
+}
+
 #smtextbox
 {
   width:38em;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 653px) {
+  .nd {
+    font-size:12px;
+  }
   #textbox 
   {
     width:20em;
@@ -52,3 +176,83 @@
     width:20em;
   }
 }
+
+@media (max-width: 400px) {
+  .nd {
+    font-size:10px;
+  }
+  #textbox 
+  {
+    width:12em;
+  }
+  #smtextbox
+  {
+    width:12em;
+  }
+}
+
+@media (max-width: 300px) {
+  .nd {
+    font-size:8px;
+  }
+  #textbox 
+  {
+    width:10em;
+  }
+  #smtextbox
+  {
+    width:10em;
+  }
+}
+
+.RoomContainer {
+  min-height: 400px;
+  background-color:darkblue;
+  color:white;
+  margin-right:15px;
+  display:flex;
+  border-radius:10px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.RoomContainer p {
+  position:relative;
+  margin:10px 10px;
+  padding:10px;
+  font-weight:bold;
+  border-radius:10px;
+  background-color: white;
+  color:black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.RoomContainer p:hover {
+  transition: transform 0.5s;
+  transform:scale(1.05);
+  background-color: lightcoral;
+  cursor:pointer;
+}
+
+.PostsContainer {
+  text-align: center;
+}
+
+.PostContainer p {
+  max-width: 650px;
+}
+
+.Posts {
+  position:relative;
+  margin-top:15px;
+  margin-right:60px;
+  padding:10px;
+  font-weight:bold;
+  border-radius:9px;
+  background-color: darkblue;
+  color:white;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+
