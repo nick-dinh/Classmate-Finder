@@ -21,13 +21,16 @@ function GetPosts() {
     // should be able to click on the post and be sent to detailed post
     return (
         <div className="PostContainer">
+            <button onClick = {() => { history.push("/createpost"); }}>Create Post</button>
+            <h1>Social Posts</h1>
             { postList.map((val, key) => {
                 let time = val.scheduledtime.split('T')[0];
                 return (
                     <div className="Posts">
-                        <span className="post-title" onClick= {() => {
-                            (history.push(`/post/${val.postid}`))
-                        }}><h2>{val.title}</h2> <p>@{val.location} on {time}</p></span>
+                        <h2>{val.title}</h2> 
+                        <p>@{val.location} on {time}</p>
+                        <p className="link" onClick= {() => {(history.push(`/post/${val.postid}`))}}>Read More</p>
+                        <hr></hr>
                     </div>
                 )})
             }

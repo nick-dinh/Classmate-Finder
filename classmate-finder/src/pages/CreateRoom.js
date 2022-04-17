@@ -6,7 +6,6 @@ import '../App.css'
 
 function CreateRoom() {
     const [users,setUsers] = useState("");
-    let {postId} = useParams();
 
     // call express API server on port 5051 (post)
     const APIPost = () => {
@@ -14,7 +13,7 @@ function CreateRoom() {
     }
 
     return (
-        // get input for the API post
+        // get input for the API post   
         <div className="GroupCreator">
             <label>Users (..., ..., ...): </label>
             <input type="text" onChange = { (e) => {

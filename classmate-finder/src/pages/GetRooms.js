@@ -27,9 +27,9 @@ function GetRooms() {
             { roomList.map((val, key) => {
                 return (
                     <div className="Rooms">
-                        <h2 className="room-name" onClick= {() => {
+                        <h2 className="click-able" onClick= {() => {
                             (history.push(`/room/${val.chatid}-${userName}`))
-                        }}>{val.users}</h2>
+                        }}>{val.users}</h2><hr></hr>
                     </div>
                 )})
             }
