@@ -18,7 +18,6 @@ function Room() {
     // call express API server and get messages from ID
     useEffect(() => {
         Axios.get(`http://localhost:5051/api/getMessagesFromID/${roomId}`).then((data) => {
-            console.log(data);
             setMessageList(data.data);
         });
     },[roomId]);
@@ -41,23 +40,26 @@ function Room() {
 
     return (
         // print messages and send messages
-        <div className="MessageContainer">
-            <h1 className="room-name">Room {chatId}</h1>
-            <input id="smtextbox" placeholder="Username" onChange = { (e) => {setAdded(e.target.value)}}></input><button onClick = { APIAdd }>Add to Group</button>
-            <br></br><br></br>
-            <hr></hr>
-            { messageList.map((val, key) => {
-                return (
-                    <div className="Message">
-                        <p className="textmsg"><b>{val.username} : </b>{val.message} | {val.timestamp}</p>
-                    </div>
-                )})
-            }
-            <br></br>
-            <textarea id="textbox" onChange = { (e) => {setMessage(e.target.value)}}/>
-            <button id="textsidebutton" onClick = {APIPost}>Send Message</button>
-            <hr></hr>
-            <h2 className="click-able" onClick= {() => {(history.push(`/rooms/${username}`))}}>Go Back</h2>
+        <div className="nd">
+            <div className="MessageContainer">
+                <h1 className="room-name">Room {chatId}</h1>
+                <input id="smtextbox" placeholder="Username" onChange = { (e) => {setAdded(e.target.value)}}></input>
+                <button className="buttonsm" onClick = { APIAdd }>Add to Group</button>
+                <br></br><br></br>
+                <hr></hr>
+                { messageList.map((val, key) => {
+                    return (
+                        <div className="Message">
+                            <p className="textmsg"><b>{val.username} : </b>{val.message} | {val.timestamp}</p>
+                        </div>
+                    )})
+                }
+                <br></br>
+                <textarea id="textbox" onChange = { (e) => {setMessage(e.target.value)}}/>
+                <button className="buttonlg" onClick = {APIPost}>Send Message</button>
+                <hr></hr>
+                <button className="button" onClick= {() => {(history.push(`/rooms/${username}`))}}>Go Back</button>
+            </div>
         </div>
     );
 }

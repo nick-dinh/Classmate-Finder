@@ -13,13 +13,15 @@ function CreateRoom() {
     }
 
     return (
-        // get input for the API post   
-        <div className="GroupCreator">
-            <label>Users (..., ..., ...): </label>
-            <input type="text" onChange = { (e) => {
-                setUsers(e.target.value)
-            }}/>
-            <button onClick = { APIPost }>Create Chatroom</button>
+        // get input for the API post 
+        <div className="nd">  
+            <div className="GroupCreator">
+                <label>Users (..., ..., ...): </label>
+                <input type="text" onChange = { (e) => {
+                    setUsers(e.target.value)
+                }}/>
+                <button onClick = { APIPost }>Create Chatroom</button>
+            </div>
         </div>
     )
 }

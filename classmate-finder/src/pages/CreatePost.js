@@ -21,19 +21,21 @@ function CreatePost() {
 
     return (
         // get input for the API post
-        <div className="GroupCreator">
-            <h1>Create Post</h1>
-            <h2>Title</h2>
-            <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setTitle(e.target.value)}}/>
-            <h2>Location</h2>
-            <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setLocation(e.target.value)}}/>
-            <h2>Body</h2>
-            <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setBody(e.target.value)}}/>
-            <h2>Time</h2>
-            <textarea id="textbox" placeholder="YYYY-MM-DD HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
-            <br></br>
-            <button onClick = { APIPost }>Create Post</button>
-            <h2 className="click-able" onClick= {() => {(history.push(`/posts`))}}>Go Back</h2>
+        <div className="nd">
+            <div className="GroupCreator">
+                <h1>Create Post</h1>
+                <h2>Title</h2>
+                <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setTitle(e.target.value)}}/>
+                <h2>Location</h2>
+                <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setLocation(e.target.value)}}/>
+                <h2>Body</h2>
+                <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setBody(e.target.value)}}/>
+                <h2>Time</h2>
+                <textarea id="textbox" placeholder="YYYY-MM-DD HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
+                <br></br>
+                <button className="buttongr" onClick = { APIPost }>Create Post</button>
+                <button className="button" onClick= {() => {(history.push(`/posts`))}}>Go Back</button>
+            </div>
         </div>
     )
 }

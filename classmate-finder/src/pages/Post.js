@@ -11,18 +11,14 @@ function Post() {
     let username = "tomato";
     let author = "";
 
-    console.log(postId)
-
     let history = useHistory();
 
     // call express API server and get post contents from ID
     useEffect(() => {
         Axios.get(`http://localhost:5051/api/getPost/${postId}`).then((data) => {
-            console.log(data);
             setDetailsList(data.data);
         });
         Axios.get(`http://localhost:5051/api/getCommentsFromID/${postId}`).then((data) => {
-            console.log(data);
             setCommentsList(data.data);
         });
     },[postId]);
@@ -40,34 +36,36 @@ function Post() {
     }
 
     return (
-        <div className="PostContainer">
-            <div clasName="PostContent">
-                { detailsList.map((val, key) => {
-                    return (
-                        <div className="post">
-                            <h1 className="posttitle">{val.title} hosted by {author = val.author}</h1>
-                            <h2 className="locationtime">{val.location} @ {val.scheduledtime.split('T')[0]}</h2>
-                            <p className="body">{val.body}</p>
-                            <br></br>
-                        </div>
-                    )})
-                }
-                { username === author ? <button className="edit" onClick= {() => {(history.push(`/updatepost/${postId}`))}}>Edit Post</button> : <br></br> }
-                { username === author ? <button className="delete" onClick= { APIDelete }>Delete Post</button> : <p></p> }
-                <h2 className="click-able" onClick= {() => {(history.push(`/posts`))}}>Go Back</h2>
-            </div>
-            <div className="CommentContainer">
-                <h2>Comments</h2>
-                <textarea id="textbox" placeholder="Leave a comment!" onChange = { (e) => {setMessage(e.target.value)}}/>
-                <br></br>
-                <button onClick = { APIPost }>Post Comment</button>
-                { commentsList.map((val, key) => {
-                    return (
-                        <div className="Comment">
-                            <p className="commentmsg">{val.message}<br></br><b>{val.username} @ {val.timestamp}</b></p>
-                        </div>
-                    )})
-                }
+        <div className="nd">
+            <div className="PostContainer">
+                <div clasName="PostContent">
+                    { detailsList.map((val, key) => {
+                        return (
+                            <div className="post">
+                                <h1 className="posttitle">{val.title} hosted by {author = val.author}</h1>
+                                <h2 className="locationtime">{val.location} @ {val.scheduledtime.split('T')[0]}</h2>
+                                <p className="body">{val.body}</p>
+                                <br></br>
+                            </div>
+                        )})
+                    }
+                    { username === author ? <button className="buttongr" onClick= {() => {(history.push(`/updatepost/${postId}`))}}>Edit Post</button> : <br></br> }
+                    { username === author ? <button className="buttonrd" onClick= { APIDelete }>Delete Post</button> : <p></p> }
+                    <button className="button" onClick= {() => {(history.push(`/posts`))}}>Go Back</button>
+                </div>
+                <div className="CommentContainer">
+                    <h2>Comments</h2>
+                    <textarea id="textbox" placeholder="Leave a comment!" onChange = { (e) => {setMessage(e.target.value)}}/>
+                    <button className="buttonlg" onClick = { APIPost }>Post Comment</button>
+                    { commentsList.map((val, key) => {
+                        return (
+                            <div className="Comment">
+                                <p className="commentmsg">{val.message}<br></br><b>{val.username}</b></p>
+                                <p className="invis">@ {val.timestamp}</p>
+                            </div>
+                        )})
+                    }
+                </div>
             </div>
         </div>
     );

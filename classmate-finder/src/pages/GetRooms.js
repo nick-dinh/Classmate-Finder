@@ -9,13 +9,11 @@ function GetRooms() {
     // get username from url
     const [roomList,setRoomList] = useState([]);
     let {userName} = useParams();
-    console.log(userName)
     let history = useHistory();
 
     // call express API server and get rooms and store in list
     useEffect(() => {
         Axios.get(`http://localhost:5051/api/getChatsFromName/${userName}`).then((data) => {
-            console.log(data)
             setRoomList(data.data)
         });
     },[userName]);
@@ -23,16 +21,17 @@ function GetRooms() {
     // display all the rooms that user is a part of
     // should be able to click on the room and be sent to a new page with the messages
     return (
-        <div className="RoomContainer">
-            { roomList.map((val, key) => {
-                return (
-                    <div className="Rooms">
-                        <h2 className="click-able" onClick= {() => {
-                            (history.push(`/room/${val.chatid}-${userName}`))
-                        }}>{val.users}</h2><hr></hr>
-                    </div>
-                )})
-            }
+        <div className="nd">
+            <div className="RoomContainer">
+                <h2>Open Rooms</h2>
+                <ul>
+                    { roomList.map((val, key) => {
+                        return (
+                            <p onClick= {() => {(history.push(`/room/${val.chatid}-${userName}`))}}>{val.users}</p>
+                        )})
+                    }
+                </ul>
+            </div>
         </div>
     );
 }
